@@ -5,8 +5,8 @@ api = Blueprint('api',__name__,url_prefix='/api')
 from .usersResource import users
 api.register_blueprint(users)
 
-from .checkpointsResource import checkpoints
-api.register_blueprint(checkpoints)
+from .checkupsResource import checkups
+api.register_blueprint(checkups)
 
 from .reservationsResource import reservations
 api.register_blueprint(reservations)
