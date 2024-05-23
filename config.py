@@ -1,6 +1,7 @@
 class Config:
     TESTING=False
-
+    JSONIFY_PRETTYPRINT_REGULAR=True
+    
 class TestConfig(Config):
     TESTING=True
 
