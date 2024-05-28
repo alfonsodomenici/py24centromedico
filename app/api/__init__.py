@@ -10,3 +10,6 @@ api.register_blueprint(checkups)
 
 from .reservationsResource import reservations
 api.register_blueprint(reservations)
+
+from .authResource import auths
+api.register_blueprint(auths)

@@ -1,4 +1,5 @@
 class Config:
+    JWT_SECRET_KEY='my secret key'
     TESTING=False
     JSONIFY_PRETTYPRINT_REGULAR=True
     

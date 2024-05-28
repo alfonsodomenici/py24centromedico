@@ -26,3 +26,11 @@ def findUser(id):
     cursor.execute(q)
     return cursor.fetchone()
 
+def findUserByEmail(email):
+    cursor = db.connection.cursor()
+    q = f"""select * 
+        from tbclienti 
+        where usrmail='{email}'
+        """
+    cursor.execute(q)
+    return cursor.fetchone()    
