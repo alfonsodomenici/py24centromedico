@@ -1,5 +1,15 @@
 from app import db
 
+def findReservationById(id):
+    cursor = db.connection.cursor()
+    q=f"""
+        select p.idprenotazioni,v.tipo,p.data,p.pagato from tbprenotazioni p
+        join tbvisite v on p.idvisita=v.idvisita
+        where p.idprenotazioni={id}
+    """
+    cursor.execute(q)
+    return cursor.fetchone()
+
 def findAllReservations():
     cursor = db.connection.cursor()
     q = f"""
@@ -34,4 +44,4 @@ def createUserReservation(idcliente,idvisita,data,pagato):
     cursor.execute(q)
     conn.commit()
     lastid = cursor.lastrowid
-    return lastid
+    return findReservationById(lastid)
