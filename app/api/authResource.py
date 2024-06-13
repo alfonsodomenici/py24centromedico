@@ -3,6 +3,7 @@ from http import HTTPStatus
 from passlib.hash import pbkdf2_sha256
 from .usersService import findUserByEmail
 from flask_jwt_extended import create_access_token, jwt_required
+
 auths = Blueprint('auths',__name__, url_prefix='/auths')
 
 @auths.post("/")
