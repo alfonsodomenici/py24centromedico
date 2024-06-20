@@ -2,7 +2,7 @@ from flask import Blueprint, request,json, Response
 from http import HTTPStatus
 from passlib.hash import pbkdf2_sha256  
 from app import db
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, verify_jwt_in_request
 from .usersService import findAllUsers,createUser,findUser
 from .reservationsService import findUserReservations,createUserReservation
 
@@ -31,7 +31,7 @@ def find(id):
     user = findUser(id)
     return Response(response=json.dumps(user), status=HTTPStatus.OK, content_type='application/json')
 
-@users.get("/<int:id>/reservations")
+@users.get("/<int:id>/reservations/")
 @jwt_required()
 def findReservations(id):
     sub = get_jwt_identity()
@@ -41,7 +41,7 @@ def findReservations(id):
     result = findUserReservations(id)
     return Response(response=json.dumps(result), status=HTTPStatus.OK, content_type='application/json')
 
-@users.post("/<int:id>/reservations")
+@users.post("/<int:id>/reservations/")
 @jwt_required()
 def createReservation(id):
     sub = get_jwt_identity()
